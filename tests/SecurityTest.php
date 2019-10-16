@@ -130,13 +130,46 @@ class SecurityTest extends \PHPUnit\Framework\TestCase
 
     public function testUid()
     {
-        $this->assertRegExp('/^([a-zA-Z0-9]*){15}$/', Security::uid());
-        $this->assertRegExp('/^([a-zA-Z0-9]*){18}$/', Security::uid(18));
+        $this->assertRegExp('/^[a-zA-Z0-9]{16}$/', Security::uid());
+        $this->assertRegExp('/^[a-zA-Z0-9]{18}$/', Security::uid(18));
     }
 
     public function testRandom()
     {
-        $this->assertRegExp('/^([a-z0-9]*){18}$/', Security::random());
-        $this->assertRegExp('/^([a-z0-9]*){21}$/', Security::random(21));
+        $this->assertRegExp('/^[a-f0-9]{18}$/', Security::random());
+        $this->assertRegExp('/^[a-f0-9]{21}$/', Security::random(21));
+    }
+
+    public function testHex()
+    {
+        $this->assertRegExp('/^[a-f0-9]{16}$/', Security::hex());
+        $this->assertRegExp('/^[a-f0-9]{32}$/', Security::hex(32));
+    }
+    public function testBase64()
+    {
+        $regex = '/^[A-Za-z0-9+\/]';
+        $this->assertRegExp($regex . '{16}$/', Security::base64());
+        $this->assertRegExp($regex . '{32}$/', Security::base64(32));
+
+        $regex = '/^[-A-Za-z0-9_-]';
+        $this->assertRegExp($regex . '{64}$/', Security::base64(64, true));
+    }
+
+    public function testBase62()
+    {
+        $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $this->assertRegExp('/^[' . $chars . ']{64}$/', Security::base62(64));
+    }
+
+    public function testBase58()
+    {
+        $chars = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
+        $this->assertRegExp('/^[' . $chars . ']{64}$/', Security::base58(64));
+    }
+
+    public function testBase36()
+    {
+        $chars = '0123456789abcdefghijklmnopqrstuvwxyz';
+        $this->assertRegExp('/^[' . $chars . ']{64}$/', Security::base36(64));
     }
 }

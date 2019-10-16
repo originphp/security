@@ -150,16 +150,15 @@ class Security
     }
 
     /**
-     * Generates a cryptographically secure random string
+     * Generates a cryptographically secure random hex string with a length 18.
+     * Alias for hex with higher default value.
      *
-     * @param integer $length
+     * @param integer $length 18
      * @return string
      */
     public static function random(int $length = 18) : string
     {
-        $random = random_bytes((int) ceil($length / 2));
-
-        return substr(bin2hex($random), 0, $length);
+        return static::hex($length);
     }
 
     /**
@@ -171,19 +170,12 @@ class Security
      *
      * @see https://en.wikipedia.org/wiki/Birthday_problem
      *
-     * @param integer $length default 15
+     * @param integer $length default 16
      * @return string
      */
-    public static function uid(int $length = 15) : string
+    public static function uid(int $length = 16) : string
     {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-        $out = '';
-        for ($i = 0; $i < $length; $i++) {
-            $out .= $characters[random_int(0, 61)];
-        }
-
-        return $out;
+        return static::base62($length);
     }
 
     /**
@@ -228,6 +220,73 @@ class Security
         }
        
         return null;
+    }
+
+    /**
+    * Generates a random hex string
+    *
+    * @param integer $length
+    * @return string
+    */
+    public static function hex(int $length = 16) : string
+    {
+        $characters = '0123456789abcdef';
+
+        return static::generateRandomString($length, $characters);
+    }
+
+    /**
+     * Generates a random base36 string
+     *
+     * @param integer $length
+     * @return string
+     */
+    public static function base36(int $length = 16) : string
+    {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyz';
+
+        return static::generateRandomString($length, $characters);
+    }
+
+    /**
+     * Generates a random base58 string
+     *
+     * @param integer $length
+     * @return string
+     */
+    public static function base58(int $length = 16) : string
+    {
+        $characters = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
+
+        return static::generateRandomString($length, $characters);
+    }
+
+    /**
+    * Generates a random base62 string
+    *
+    * @param integer $length
+    * @return string
+    */
+    public static function base62(int $length = 16) : string
+    {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+        return static::generateRandomString($length, $characters);
+    }
+
+    /**
+    * Generates a random base64 string
+    *
+    * @param integer $length
+    * @param boolean $urlSafe use -_ instead of +/
+    * @return string
+    */
+    public static function base64(int $length = 16, bool $urlSafe = false) : string
+    {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $characters .= ($urlSafe === false) ? '+/' : '-_';
+
+        return static::generateRandomString($length, $characters);
     }
 
     /**
@@ -287,5 +346,23 @@ class Security
             sprintf('%02x', $sequence & 0xff),
             $macAddress
         ]);
+    }
+
+    /**
+     * Random string generator
+     *
+     * @param integer $length
+     * @param string $characters
+     * @return string
+     */
+    private static function generateRandomString(int $length, string  $characters) : string
+    {
+        $max = strlen($characters) - 1;
+        $out = '';
+        for ($i = 0; $i < $length; $i++) {
+            $out .= $characters[random_int(0, $max)];
+        }
+
+        return $out;
     }
 }

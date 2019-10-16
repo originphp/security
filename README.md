@@ -95,13 +95,26 @@ $encrypted = 'ohRRdAydx+4wfOd7Vm+LHmmV9zBH+3r0WLQylyPMPu2RvCjX9FVgoeUBZuLYBTLM4x
 $plain = Security::decrypt($encrypted,$key);
 ```
 
-## Random
+## Random Strings
 
-To generate a cryptographically secure random string, the default length is 18.
+To generate a cryptographically secure random string, the default length is 18. It is an alias for hex but with higher default length.
 
 ```php
 $randomString = Security::random(); // 5f31ecf661dabb04dc
 ```
+
+### Different Encodings
+
+You can generate random strings with different encoding.
+
+```php
+$hex = Security::hex();
+$base36 = Security::base36();
+$base58 = Security::base58();
+$base62 = Security::base62();
+$base64 = Security::base64();
+```
+
 
 ## UID
 
@@ -109,10 +122,10 @@ If you need to generate a unique id, and don't need to use a UUID, then the UID 
 
 > If you are generating a API token or another form of string that a user might need to type in, then use `Security::random` or `Security::uuid` instead since these use lower case characters.
 
-To generate a cryptographically secure unique id (UID) with the default length of 15.
+To generate a cryptographically secure unique id (UID) with the default length of 16.
 
 ```php
-$uid = Security::uid(); // 64cjBxfz2JPhyCQ
+$uid = Security::uid(); // O64cjBxfz2JPhyCQ
 ```
 
 ### UUID
