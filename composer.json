@@ -12,7 +12,13 @@
         "decrypt",
         "encryption",
         "hashing",
-        "hash"
+        "hash",
+        "hex",
+        "hexadecimal",
+        "base36",
+        "base62",
+        "base64",
+        "base58"
     ],
     "homepage": "https://www.originphp.com",
     "license": "MIT",
