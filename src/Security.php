@@ -209,12 +209,14 @@ class Security
      */
     public static function macAddress() : ?string
     {
+        $macAddress = null;
         if (strtoupper(php_uname('s')) === 'LINUX') {
             $files = glob('/sys/class/net/*/address', GLOB_NOSORT);
             foreach ($files as $file) {
-                $macAddress = trim(file_get_contents($file));
-                if ($macAddress !== '00:00:00:00:00:00' and preg_match('/^([0-9a-f]{2}:){5}[0-9a-f]{2}$/', $macAddress)) {
-                    return $macAddress;
+                $contents = trim(file_get_contents($file));
+                if ($contents !== '00:00:00:00:00:00' and preg_match('/^([0-9a-f]{2}:){5}[0-9a-f]{2}$/', $contents)) {
+                    $macAddress = $contents;
+                    break;
                 }
             }
         }
