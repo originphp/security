@@ -97,10 +97,10 @@ $plain = Security::decrypt($encrypted,$key);
 
 ## Random Strings
 
-To generate a cryptographically secure random string, the default length is 18. It is an alias for hex but with higher default length.
+To generate a cryptographically secure random string, the default length is 16. (This is an alias for hex)
 
 ```php
-$randomString = Security::random(); // 5f31ecf661dabb04dc
+$randomString = Security::random(); // 5f31ecf661dabb04
 ```
 
 ### Different Encodings

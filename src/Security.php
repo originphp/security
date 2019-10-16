@@ -150,13 +150,12 @@ class Security
     }
 
     /**
-     * Generates a cryptographically secure random hex string with a length 18.
-     * Alias for hex with higher default value.
+     * Alias for hex (generates a random hex string)
      *
      * @param integer $length 18
      * @return string
      */
-    public static function random(int $length = 18) : string
+    public static function random(int $length = 16) : string
     {
         return static::hex($length);
     }

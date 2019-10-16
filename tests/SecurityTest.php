@@ -140,11 +140,9 @@ class SecurityTest extends \PHPUnit\Framework\TestCase
         $this->assertRegExp('/^[a-zA-Z0-9]{18}$/', Security::uid(18));
     }
 
-
-
     public function testRandom()
     {
-        $this->assertRegExp('/^[a-f0-9]{18}$/', Security::random());
+        $this->assertRegExp('/^[a-f0-9]{16}$/', Security::random());
         $this->assertRegExp('/^[a-f0-9]{21}$/', Security::random(21));
     }
 
