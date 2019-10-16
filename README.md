@@ -4,7 +4,7 @@
 [![build](https://travis-ci.org/originphp/security.svg?branch=master)](https://travis-ci.org/originphp/security)
 [![coverage](https://coveralls.io/repos/github/originphp/security/badge.svg?branch=master)](https://coveralls.io/github/originphp/security?branch=master)
 
-The `Security` library provides various function related to security such as hashing, encryption, decryption.
+The `Security` library provides various function related to security such as hashing, encryption, decryption and secure random string generation.
 
 ## Installation
 
@@ -123,7 +123,7 @@ If you need to generate a unique id, and don't need to use a UUID, then the UID 
 
 > If you are generating a API token or another form of string that a user might need to type in, then use `Security::random` or `Security::uuid` instead since these use lower case characters.
 
-To generate a cryptographically secure unique id (UID) with the default length of 16.
+To generate a cryptographically secure unique id (UID) using base62 with a default length of 16.
 
 ```php
 $uid = Security::uid(); // O64cjBxfz2JPhyCQ
