@@ -1,0 +1,41 @@
+{
+    "name": "originphp/security",
+    "description": "OriginPHP Security",
+    "type": "library",
+    "keywords": [
+        "originphp",
+        "security",
+        "uid",
+        "uuid",
+        "mac address",
+        "encrypt",
+        "decrypt",
+        "encryption",
+        "hashing",
+        "hash"
+    ],
+    "homepage": "https://www.originphp.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jamiel Sharief",
+            "email": "js@originphp.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Origin\\Security\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Origin\\Test\\Security\\": "tests/"
+        }
+    },
+    "require": {
+        "php": "^7.2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0"
+    }
+}
