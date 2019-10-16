@@ -59,6 +59,7 @@ class SecurityTest extends \PHPUnit\Framework\TestCase
 
         $this->assertTrue(Security::compare($expected, $correct));
         $this->assertFalse(Security::compare($expected, $incorrect));
+        $this->assertFalse(Security::compare(null, ''));
     }
 
     public function testEncryptDecrypt()
@@ -121,6 +122,11 @@ class SecurityTest extends \PHPUnit\Framework\TestCase
 
         $this->assertRegExp(
             '/\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b/',
+            Security::uuid(['macAddress' => true])
+        );
+
+        $this->assertRegExp(
+            '/\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b/',
             Security::uuid(['macAddress' => '00:01:01:00:00:00'])
         );
 
@@ -133,6 +139,8 @@ class SecurityTest extends \PHPUnit\Framework\TestCase
         $this->assertRegExp('/^[a-zA-Z0-9]{16}$/', Security::uid());
         $this->assertRegExp('/^[a-zA-Z0-9]{18}$/', Security::uid(18));
     }
+
+
 
     public function testRandom()
     {
