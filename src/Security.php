@@ -24,10 +24,11 @@ class Security
     /**
      * Hashes a string. This is not for passwords.
      *
+     * @see https://www.php.net/manual/en/function.hash-algos.php
      * @param string $string
      * @param array $options options keys are
      * - pepper: (default:null). Set a string to use as a pepper
-     * - type: (default:sha256)
+     * - type: (default:sha256) see hash_algos()
      * @return string
      */
     public static function hash(string $string, array $options = []): string
