@@ -97,7 +97,7 @@ $plain = Security::decrypt($encrypted,$key);
 
 ## Random Strings
 
-To generate a cryptographically secure random string, the default length is 16. (This is an alias for hex)
+To generate a cryptographically secure hexadecimal random string, the default length is 16. (This is an alias for hex)
 
 ```php
 $randomString = Security::random(); // 5f31ecf661dabb04
@@ -139,7 +139,7 @@ To generate a random UUID (version 4)
 $uid = Security::uuid(); // 38c67382-d3ab-4430-a27e-0c719813c09f
 ```
 
-For a version 1 UUID, set MAC address to true, this will find the MAC address on Linux systems or generate a random one if it can not get this.
+For a version 1 UUID, set MAC address to true, this will try to find the MAC address on Linux systems or generate a random one.
 
 ```php
 $uid = Security::uuid(['macAddress'=>true]); // ac337932-e4e5-11e9-928f-8bda39fe8887
