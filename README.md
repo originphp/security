@@ -108,13 +108,14 @@ $randomString = Security::random(); // 5f31ecf661dabb04dc
 You can generate random strings with different encoding.
 
 ```php
-$hex = Security::hex();
-$base36 = Security::base36();
-$base58 = Security::base58();
-$base62 = Security::base62();
-$base64 = Security::base64();
+$hex = Security::hex(); // gpgf67ezotl06wqs
+$base36 = Security::base36(); // 13owqvwcgb426rvq
+$base58 = Security::base58(); // SyqBFAtGfNxZkZMQ
+$base62 = Security::base62(); // oc1eIfAHKWWt5zrO
+$base64 = Security::base64(); // v3xsI6O+g6LsuY4+
+// url safe
+$base64 = Security::base64(16,true); // YPT9rp-i6jqXWCvA
 ```
-
 
 ## UID
 
