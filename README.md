@@ -105,7 +105,7 @@ $randomString = Security::random(); // 5f31ecf661dabb04dc
 
 ### Different Encodings
 
-You can generate random strings with different encoding.
+You can generate secure random strings with different encoding.
 
 ```php
 $hex = Security::hex(); // gpgf67ezotl06wqs
@@ -139,8 +139,7 @@ To generate a random UUID (version 4)
 $uid = Security::uuid(); // 38c67382-d3ab-4430-a27e-0c719813c09f
 ```
 
-For a version 1 UUID, set MAC address to true, this will find the MAC address on Linux systems or generate a random
-one if it can not get this.
+For a version 1 UUID, set MAC address to true, this will find the MAC address on Linux systems or generate a random one if it can not get this.
 
 ```php
 $uid = Security::uuid(['macAddress'=>true]); // ac337932-e4e5-11e9-928f-8bda39fe8887
