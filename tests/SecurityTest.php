@@ -36,6 +36,14 @@ class SecurityTest extends \PHPUnit\Framework\TestCase
         Security::hash($plain, ['type' => 'unkownHashType']);
     }
 
+    public function testMacAddress()
+    {
+        if (strtoupper(php_uname('s')) !== 'LINUX') {
+            $this->markTestSkipped('This test is for Linux');
+        }
+        $this->assertRegExp('/^([0-9a-f]{2}:){5}[0-9a-f]{2}$/', Security::macAddress());
+    }
+
     public function testHashPassword()
     {
         $result = Security::hashPassword('secret');
