@@ -1,8 +1,7 @@
 <?php
-
 /**
  * OriginPHP Framework
- * Copyright 2018 - 2019 Jamiel Sharief.
+ * Copyright 2018 - 2020 Jamiel Sharief.
  *
  * Licensed under The MIT License
  * The above copyright notice and this permission notice shall be included in all copies or substantial
@@ -81,7 +80,7 @@ class Security
      */
     public static function compare(string $original = null, string $compare = null): bool
     {
-        if (! is_string($original) or ! is_string($compare)) {
+        if (! is_string($original) || ! is_string($compare)) {
             return false;
         }
 
