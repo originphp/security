@@ -179,12 +179,11 @@ class Security
 
     /**
      * Generates a UUID (Universally Unique IDentifier). By default it generates a
-     * random UUID (version 4), but if you pass the timestamp option key or provide a
+     * random UUID (version 4), but if you pass the macAddres option key or provide a
      * MAC address then it will generate a UUID version 1.
      *
      * @param array $options The options array supports the following keys
-     *   - macAddress: set to true to use the MAC address (linux) and generate a UUID version 1. If it can't get a MAC address
-     * will generate a random one. You can also set the MAC address manually.
+     *   - macAddress: set to true to use the MAC address (linux) and generate a UUID version 1. You can also set the MAC address manually.
      * @return string
      */
     public static function uuid(array $options = []) : string
@@ -215,7 +214,7 @@ class Security
            
             foreach ($files as $file) {
                 $contents = trim(file_get_contents($file));
-                if ($contents !== '00:00:00:00:00:00' and preg_match('/^([0-9a-f]{2}:){5}[0-9a-f]{2}$/', $contents)) {
+                if ($contents !== '00:00:00:00:00:00' && preg_match('/^([0-9a-f]{2}:){5}[0-9a-f]{2}$/', $contents)) {
                     $macAddress = $contents;
                     break;
                 }
@@ -317,7 +316,7 @@ class Security
     private static function uuidv1(string $macAddress) : string
     {
         $macAddress = str_replace([':', '-'], '', $macAddress);
-        if (strlen($macAddress) !== 12 or ctype_xdigit($macAddress) === false) {
+        if (strlen($macAddress) !== 12 || ctype_xdigit($macAddress) === false) {
             throw new InvalidArgumentException('Invalid MAC address');
         }
 
