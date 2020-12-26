@@ -96,7 +96,7 @@ class Security
      */
     public static function generateKey(): string
     {
-        return bin2hex(random_bytes(16));
+        return static::base62(32);
     }
 
     /**

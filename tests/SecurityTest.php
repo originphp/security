@@ -101,7 +101,7 @@ class SecurityTest extends \PHPUnit\Framework\TestCase
 
     public function testGenerateKey()
     {
-        $this->assertEquals(32, strlen(Security::generateKey()));
+        $this->assertRegExp('/^[a-zA-Z0-9]{32}+$/', Security::generateKey());
     }
 
     public function testEncryptInvalidKeyLength()
