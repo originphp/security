@@ -69,7 +69,7 @@ To encrypt and decrypt a string you will need a key, you can generate a random s
 
 ```php
 use Origin\Security\Security;
-$key = Security::generateKey(); // ESaCestIJvuAo3NUAtHAZG9DqmFJZtyx1
+$key = Security::generateKey(); // ESaCestIJvuAo3NUAtHAZG9DqmFJZtyx
 ```
 
 The key length must be 32 bytes (256 bits) to use with the encryption decryption functions.
