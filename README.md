@@ -1,7 +1,7 @@
 # Security
 
 ![license](https://img.shields.io/badge/license-MIT-brightGreen.svg)
-[![build](https://travis-ci.org/originphp/security.svg?branch=master)](https://travis-ci.org/originphp/security)
+[![build](https://github.com/originphp/security/workflows/CI/badge.svg)](https://github.com/originphp/security/actions)
 [![coverage](https://coveralls.io/repos/github/originphp/security/badge.svg?branch=master)](https://coveralls.io/github/originphp/security?branch=master)
 
 The `Security` library provides various function related to security such as hashing, encryption, decryption and secure random string generation.

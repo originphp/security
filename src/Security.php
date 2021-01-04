@@ -1,7 +1,7 @@
 <?php
 /**
  * OriginPHP Framework
- * Copyright 2018 - 2020 Jamiel Sharief.
+ * Copyright 2018 - 2021 Jamiel Sharief.
  *
  * Licensed under The MIT License
  * The above copyright notice and this permission notice shall be included in all copies or substantial
@@ -152,7 +152,7 @@ class Security
     /**
      * Alias for hex (generates a random hex string)
      *
-     * @param integer $length 18
+     * @param integer $length 16
      * @return string
      */
     public static function random(int $length = 16) : string
